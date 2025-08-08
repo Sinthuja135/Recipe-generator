@@ -1,0 +1,83 @@
+.ingredient-input {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.ingredient-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  background-color: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ingredient-input input::placeholder {
+  color: #94a3b8;
+}
+
+.ingredient-input input:focus {
+  border-color: #2a7f62;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(42, 127, 98, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.ingredient-input button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2a7f62;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(42, 127, 98, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ingredient-input button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.ingredient-input button:hover:not(:disabled)::before {
+  transform: translateX(0);
+}
+
+.ingredient-input button:hover:not(:disabled) {
+  background-color: #22543d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(42, 127, 98, 0.3);
+}
+
+.ingredient-input button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(42, 127, 98, 0.4), 0 4px 8px rgba(42, 127, 98, 0.3);
+}
+
+.ingredient-input button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(42, 127, 98, 0.2);
+}
+
+.ingredient-input button:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

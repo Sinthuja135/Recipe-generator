@@ -1,0 +1,155 @@
+.recipe-card {
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  animation: cardAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recipe-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #2a7f62;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+
+.recipe-card:hover,
+.recipe-card:focus-within {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.recipe-card:hover::before,
+.recipe-card:focus-within::before {
+  transform: scaleY(1);
+}
+
+.recipe-title {
+  color: #2a7f62;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recipe-title::after {
+  content: "🍳";
+  font-size: 1.2rem;
+}
+
+.ingredients-section {
+  margin-bottom: 1.5rem;
+}
+
+.ingredients-section > div {
+  margin-bottom: 0.75rem;
+}
+
+.ingredients-section strong {
+  color: #334155;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ingredient {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.ingredient.used {
+  background-color: #9ae6b4;
+  color: #22543d;
+}
+
+.ingredient.used:hover {
+  background-color: #6bb076;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(107, 176, 118, 0.3);
+}
+
+.ingredient.missing {
+  background-color: #feb2b2;
+  color: #742a2a;
+}
+
+.ingredient.missing:hover {
+  background-color: #f87171;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(248, 113, 113, 0.3);
+}
+
+.instructions-section {
+  margin-top: 1.5rem;
+}
+
+.instructions-section strong {
+  color: #334155;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.instructions-list {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  counter-reset: step-counter;
+  list-style-type: none;
+}
+
+.instructions-step {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  counter-increment: step-counter;
+}
+
+.instructions-step::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -1.2rem;
+  top: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #2a7f62;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

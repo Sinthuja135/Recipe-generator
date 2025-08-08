@@ -1,0 +1,78 @@
+:root {
+  --bg: #fafafa;
+  --card: #fff;
+  --muted: #666;
+}
+body {
+  font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  margin: 0 !important;
+  color: #111;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.input,
+.btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.input {
+  flex: 1;
+}
+.btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.tag {
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+.recipes {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+.card h3 {
+  margin: 0 0 8px 0;
+}
+.small {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
