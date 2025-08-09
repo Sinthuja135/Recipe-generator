@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IngredientInput } from './components/IngredientInput';
 import { IngredientTags } from './components/IngredientTags';
 import { RecipeCard } from './components/RecipeCard';
-import { fetchRecipes } from './api/recipes';
+import { fetchRecipes } from './recipes';
 import './styles/App.css';
 
 export default function App() {
@@ -25,7 +25,9 @@ export default function App() {
     setLoading(true);
     try {
       const data = await fetchRecipes(ingredients);
-      setRecipes(data.recipes || []);
+      
+      // Always create a new array reference
+      setRecipes([...(data.recipes || [])]);
     } catch (err) {
       console.error(err);
       setRecipes([]);

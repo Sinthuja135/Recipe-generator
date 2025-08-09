@@ -1,5 +1,13 @@
 import fetch from 'node-fetch';
 
+// Helper: sanitize JSON string to fix common formatting issues
+function sanitizeJsonString(jsonString) {
+  return jsonString
+    .replace(/,\s*([\]}])/g, '$1') // remove trailing commas before ] or }
+    .replace(/[\r\n]+/g, ' ')      // replace newlines with spaces
+    .trim();
+}
+
 // Helper: extract JSON array from messy API output text
 function extractJsonArray(text) {
   const start = text.indexOf('[');
@@ -7,9 +15,11 @@ function extractJsonArray(text) {
   if (start !== -1 && end !== -1 && end > start) {
     const jsonString = text.substring(start, end + 1);
     try {
-      return JSON.parse(jsonString);
+      const cleanString = sanitizeJsonString(jsonString);
+      return JSON.parse(cleanString);
     } catch (err) {
       console.error('Failed to parse extracted JSON:', err);
+      console.log('Raw JSON string:', jsonString);
       return null;
     }
   }
@@ -29,7 +39,8 @@ You are a creative recipe generator that ONLY outputs a JSON array of exactly 6 
   }
 ]
 
-DO NOT add any explanation or extra text outside the JSON.
+IMPORTANT: The output must be valid JSON. No extra spaces, commas, or explanations.  
+Ensure the JSON array and objects are perfectly formatted.
 
 User ingredients: ${ingredients.join(', ')}.
 Generate 6 simple recipes using most or all of these ingredients.
