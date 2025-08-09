@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <main className="app-container">
-        <div className="app-wrpper">
+        <div className="app-wrapper">
         <h1 className="title">Leftover Recipe Generator</h1>
         <IngredientInput onAdd={addIngredient} disabled={loading} />
         <IngredientTags ingredients={ingredients} onRemove={removeIngredient} />
