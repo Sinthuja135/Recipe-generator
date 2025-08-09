@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { getRecipeSuggestions } from './getRecipeSuggestions.js';
+import { getRecipeSuggestions } from '../vite-project/src/api/getRecipeSuggestions.js';
 
 dotenv.config();
 
